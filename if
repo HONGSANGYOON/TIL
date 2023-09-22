@@ -1,0 +1,15 @@
+가정문에 관하여
+if hong( )형식으로 사용
+예시)
+if hong(money> 5000) {
+ridetexi();
+}
+
+else란? 조건문에서 조건을 충족하지 못할 경우의 수를 제시해줄때 사용한다
+예시)
+if hong(money>50000) {
+ridetexi();
+} else {
+walk();
+}
+
