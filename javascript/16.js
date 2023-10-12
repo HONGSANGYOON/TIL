@@ -46,9 +46,31 @@
 // console.log(slicedfruits);
 
 // foreach, map, filter, find
-let numbers = [1, 2, 3, 4, 5];
+// let numbers = [1, 2, 3, 4, 5];
 
 //매개변수자리에 함수를 넣는것 : 콜백함수
-numbers.forEach(function (item) {
-  console.log("item =>" + item);
+// numbers.forEach(function (item) {
+//   console.log("item =>" + item);
+// });
+
+//map => return이 무조건 들어가야한다, 새로운 배열로 가공해서 내보낸다
+// let newnumvers = numbers.map(function (item) {
+//   return item * 2;
+// });
+// console.log(newnumvers);
+
+//filter => return이 무조건 필요, 필터링할 조건이 필요하다
+// let numbers = [1, 2, 3, 4, 5];
+// let filternumber = numbers.filter(function (item) {
+//   return item !== 5;
+// });
+// console.log(filternumber);
+
+//find => return문 필요
+let numbers = [1, 2, 3, 4, 5];
+let findnumber = numbers.find(function (item) {
+  return item > 3;
 });
+console.log(findnumber);
+
+//새로운값을 필요로하는 코드는 Return이 들어간다
