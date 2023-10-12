@@ -32,6 +32,8 @@ let person = {
   age: "30",
   gender: "male",
 };
+
+//객체의 속성(value)에 접근하는법 => 객차[key]
 for (let key in person) {
-  console.log(key + ":" + person(key));
+  console.log(key + ":" + person[key]);
 }
