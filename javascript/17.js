@@ -19,8 +19,19 @@ for (let i = 0; i < Array.length; i++) {
 }
 
 //0부터 10까지의 수중에 2의 배수만 출력하기
-for (let x = 1; x < 11; x++) {
-  if (x % 2 === 0) {
-    console.log(x + "i는 2의 배수");
-  }
+// for (let x = 1; x < 11; x++) {
+//   if (x % 2 === 0) {
+//     console.log(x + "는 2의 배수");
+//   }
+// }
+
+//for~in문
+//객차의 속성을 출력하는 문법
+let person = {
+  name: "jay",
+  age: "30",
+  gender: "male",
+};
+for (let key in person) {
+  console.log(key + ":" + person(key));
 }
