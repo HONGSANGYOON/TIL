@@ -5,7 +5,7 @@
 // let fruits = ["사과", "바나나", "오렌지"];
 
 //크기 지정
-let numders = new Array(5);
+// let numders = new Array(5);
 // console.log(fruits.length);
 // console.log(numders.length);
 
@@ -41,6 +41,14 @@ let numders = new Array(5);
 // console.log(fruits);
 
 //slice ~.slice(x,y)=> x부터 y전까지 나열해줘
-let fruits = ["사과", "바나나", "키위"];
-let slicedfruits = fruits.slice(0, 1);
-console.log(slicedfruits);
+// let fruits = ["사과", "바나나", "키위"];
+// let slicedfruits = fruits.slice(0, 1);
+// console.log(slicedfruits);
+
+// foreach, map, filter, find
+let numbers = [1, 2, 3, 4, 5];
+
+//매개변수자리에 함수를 넣는것 : 콜백함수
+numbers.forEach(function (item) {
+  console.log("item =>" + item);
+});
