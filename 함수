@@ -1,14 +1,14 @@
-function에 관하여
-function myfunction(x) {
-let hong = 3*x + 1
-return hong
-}
-myfuntion(1)
-값이 4로 도출
+// function에 관하여
+// function myfunction(x) {
+// let hong = 3*x + 1
+// return hong
+// }
+// myfuntion(1)
+// 값이 4로 도출
 
-function add(x, y) {
-let sang = x + y
-return sang
-}
-add(1, 2)
-값이 3으로 도출
+// function add(x, y) {
+// let sang = x + y
+// return sang
+// }
+// add(1, 2)
+// 값이 3으로 도출
