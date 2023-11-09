@@ -1,0 +1,118 @@
+sytled components -> 익스텐션이다.
+*** 적용시키는 코드 : yarn add styled-components
+꾸미고자하는 컴포넌트를 스타일 컴포넌트방식으로 만들고 스타일 코드를 작성하는 방식으로 한다
+
+const 변수명 = sytled.<html태그>``->백틱   
+
+css-in-js란??
+자바스크립트 코드로 => css코드를 만들어내는것
+
+프롭스를 통해 부모 와 자식간 조건부 스타일링이 가능하다.
+
+
+GlobalStyles란?? => 전역 스타일링이라고 부름(전체적으로 스타일링할때 쓰인다)
+*스타일컴포넌트는 해당 컴포넌트 내에서만 스타일링이 가능하다*
+
+스크립트 파일에 따로 글로벌스타일.jsx를 만들어서 따로 저장한다.
+#import export 꼭 하기
+
+sass방식이란?? .scss
+효율적인 css를 위해 만들어진 언어
+코드 재사용 및 가독성을 향상 시킨 방법이 sass방법
+변수로 사용 가능 : $변수명
+중첩으로 스타일도 가능
+
+default style?
+크롬 윈도우 등 각자 매개체 마다 정해진 기본 스타일이 있따.
+이걸 제거하는 방식 : css reset
+인터넷검색해보기
+import "./reset.css"; -> index.js에 작성해야 적용된다.
+
+
+
+-React Hook_
+
+#useState
+가장 기본적인 훅
+함수형 컴포넌트 내에서 가변적인 상태를 갖게함
+카운터,투 두 리스트
+
+- 코드 문법 
+const [state, setState] = useState(초기값);
+
+*함수형업데이트!!
+ex => onClick={() => {
+          setNumber(number + 1);
+        }}
+        
+함수형으로 useState쓴 예시
+onClick={() => {
+          setNumber((curentNumber) => {
+            return curentNumber + 1
+          });
+        }}
+        
+두가지의 차이점은??
+1. 기존의 업데이트 방법은 '배치성'으로 처리되어 배치 업데이트 된다. 
+   *리액트는 모든걸 모아서 한번에 반응하기 때문에 기본방식은 로직이 겹칠 경우, 한번만 작용한다
+
+    함수형 업데이트 방식을 사용하면 함수 안 매개변수에 '현재'변수를 넣기 때문에
+    각각의 '현재'매개변수는 다르기에 따로따로 처리 된다.
+
+
+#useEffect
+-렌더링 될 때, 특정한 작업을 수행해야 할 때 설정하는 훅
+-컴포넌트가 화면에 보여졌을때
+-컴포넌트가 화면에 사라졌을때(return)
+의존성 배열 : 이 배열에 값을 넣으면, 그 값이 바뀔 때만 useEffect를 실행한다!
+사용법 :  useEffect(() => {}, []);
+                          컴마 + 배열 => 이부분이 의존성 배열이다.
+                          어떤값(배열안에 값)이 바뀌면
+                이값이 발동 되도록 한다.
+cleanup(사라졌을때 실행하고싶을때) :  useEffect(() => {
+    return()=>{} - cleanup하는법은 리턴문을 사용하는거다
+    }, []);
+
+#UsrRef
+-Dom요소에 접근할 수 있도록하는 훅.
+-state와 비슷한 역활, 그러나 state는 변화가 있을시, 다시 렌더링 및 내부 변수들 초기화
+-ref에 저장한 값들은 렌더링을 일으키지 않는다. ref의 값 변화가 일어나도 랜더링으로 인해 값이 초기화 되지 않는다!
+코드문법 : const 변수명 = useRef(초기값)
+-코드 예시
+import "./App.css";
+import { useRef } from "react";
+
+function App() {
+  const ref = useRef("초기값");
+  console.log("ref", ref);
+
+  return (
+    <div>
+      <p>useRef에 대한 이야기에요.</p>
+    </div>
+  );
+}
+
+export default App;
+
+#변경도 가능
+-예시
+import "./App.css";
+import { useRef } from "react";
+
+function App() {
+  const ref = useRef("초기값");
+  console.log("ref 1", ref);
+
+  ref.current = "바꾼 값";
+  console.log("ref 1", ref);
+
+  return (
+    <div>
+      <p>useRef에 대한 이야기에요.</p>
+    </div>
+  );
+}
+
+export default App;
+
