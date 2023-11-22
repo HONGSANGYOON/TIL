@@ -1,0 +1,30 @@
+- 라우터 셋업시  -
+ 
+ <Route path="*" element={<Navigate replace to '/'>} />
+ 
+ replace를 사용해야 잘못된 도메인을 써도 디폴트값으로 간다.
+ replace를 사용 안할 시 무한루프에 빠질 수 있기 때문에 써줘야한다.
+
+ 이벤트 종류
+ onsubmit => 무엇인가를 전송할때 쓰이는 이벤트
+ onchange => 내용을 작성하거나, 여러가지중 하나를 선택할때 사용하는 이벤트
+
+
+ <select onchange={(event) => setSelected(event.target.value)}>
+            <option>맛집</option>
+            <option>여행</option>
+            <option>기타</option>
+          </select>
+여러가지의 수를 넣을때는 select 섹션안에 option태그를 하나씩 넣는다.
+(배열로 상시 업데이트가 되도록 하는 방법도 있는데 아직 구현을 못했다 - 공부할것)
+
+- 스타일컴포넌트 사용법 - 
+
+const Form = styled.form`
+     (섹션이름)  (스타일.종류)
+  background-color: #d9d9d9;
+  padding: 12px;
+`;
+
+*잊지말도록 정말 매번매번 수시로 쓰이니까.
+
