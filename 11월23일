@@ -1,0 +1,8 @@
+
+firebase 설정하는방법
+
+1. firebase를 검색한 후, 로그인하여 프로젝트를 만든다
+2. 얩에 들어가서 프로젝트명을 작성 후 npm install 코드 및 SDK코드를 받느낟
+3. npm or yarn을 사용하여 firebase패키지를 받는다 (yarn add firebase)
+4. src폴더에 firebase.js 파일을 만든다
+5. firebase파일에 기본설정을 해준다
