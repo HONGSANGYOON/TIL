@@ -1,0 +1,101 @@
+axios(엑시오스)
+-Promise 기반 HTTP라이브러리
+
+- GET - axios.get
+// axios를 통해서 get 요청을 하는 함수를 생성합니다.
+	// 비동기처리를 해야하므로 async/await 구문을 통해서 처리합니다.
+  const fetchTodos = async () => {
+    const { data } = await axios.get("http://localhost:3001/todos");
+    setTodos(data); // 서버로부터 fetching한 데이터를 useState의 state로 set 합니다.
+  };
+
+  - Post - (추가) axios.post
+  submit의 고유 특성으로 동작시 새로고침이 된다,
+  그러므로 form태그에서 새로고침이 되지 않도록 해줘야한다.
+  해결로직 : onSubmit = (e) => {
+    e.preventDefault();
+  }
+
+    const onSubmitHandler = async(todo) => {
+		//1.  이때 todos는 [{투두하나}]임
+    await axios.post("http://localhost:3001/todos", todo); // 이때 서버에 있는 todos도 [{투두하나}]임
+		
+		// 근데 여기서 서버 요청이 끝나고 서버는 [{투두가},{두개임}]
+		
+	
+		setTodos([...todos, todo]) 2. <-- 만약 이게 없다면, go to useEffect
+		//4. 새로고침해서 진짜 현재 서버 데이터를 받아오기전에 상태를 똑같이 동기시켜줌 
+		//5. 어떻게보면 유저한테 서버에서 새로 받아온것처럼 속이는거지
+		
+  };
+
+
+- Delete - axios.Delete
+  삭제시 리랜더링이 안되어 UI에 변화가 없다
+  => 필터를 걸어주는걸로 해결!
+  	
+    // 새롭게 추가한 삭제 버튼 이벤트 핸들러 
+  const onClickDeleteButtonHandler = (todoId) => {
+    axios.delete(`http://localhost:3001/todos/${todoId}`);
+    //필터를 걸어줘야한다//
+  };
+
+- Patch -(수정) 
+어떻게 바꿔줄것인가를 넣어야한다.
+
+// patch에서 사용할 id, 수정값의 state를 추가
+  const [targetId, setTargetId] = useState(null);
+  const [editTodo, setEditTodo] = useState({
+    title: "",
+  });
+
+  // 수정버튼 이벤트 핸들러 추가 👇
+  const onClickEditButtonHandler = (todoId, edit) => {
+    axios.patch(`http://localhost:3001/todos/${todoId}`, edit);
+  
+  맵함수를 사용하여 리랜더링 시키기
+  setTodos.map{(item)=>{
+    if(item.id == targetId){
+        return {...item, contents};
+    }else{
+        return item;
+    }
+    }
+  }}
+  ;
+
+- 에러핸들링 찾아보기 -
+
+//심화과정//
+
+instance 와 interceptor
+*가로채다라는 뜻과 연관해서 생각하자
+요청이 저리되기 전, 응답이 처리되기 전에 작용한다.
+
+instance.interceptors.request.use(
+
+요청을 보내기 전 수행되는 함수
+function(config){},
+    무조건 config로 받는다
+오류 오청을 보내기전 수행되는함수
+function(){},
+
+)
+
+instance.interceptors.response.use(
+
+요청을 내보내기 전 수행되는 함수
+function(response){},
+    무조건 config로 받는다
+오류 오청을 내보내기 전 수행되는함수
+function(){},
+)
+
+어떤일에 쓰이나요?
+- 요청헤더추가
+- 인증관리
+- 로그 관련 로직 삽입
+- 에러핸들링
+
+
+
