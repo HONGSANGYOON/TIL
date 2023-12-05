@@ -1,0 +1,22 @@
+리액트 쿼리
+왜 배우나요?? => 백엔드로부터 데이터를 갖고 올 수 있다.
+*백앤드 데이터가 변경되면 프론트엔드도 자동으로 변경되게 해줘서 관리가 편하다*
+
+설치하기
+=> yarn add react-query
+=> import { QueryClient, QueryClientProvier}하기
+=> QueryClient Client={QueryClient}로 감싸기 *프로바이더처럼
+
+usequery (데이터를 갖고오는거)
+=> const result = usequery('변수명', () =>{
+     const response =     (함수넣기)
+    return response.data
+})
+
+usemutation (데이터를 추가, 수정, 삭제)
+=> 임포트하기
+=> const mutation = usemutation('함수넣기');
+
+
+axios
+fetch보다 편리하게 사용할 수 있는 것!!!
