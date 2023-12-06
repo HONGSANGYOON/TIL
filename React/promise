@@ -1,0 +1,40 @@
+promise란??
+=> 비동기 처리에 활용되는 객체입니다.
+웹페이지에서 서버로부터 데이터를 요청했을 때, 데이터를 모두 받기 전에
+웹에 출력하는 경우를 방지하기 위해 활용된다.
+즉, 프로미스 객체는 비동기 로직을 동기처럼 사용할 수 있게 해주는 기능이다.
+
+promise 상태
+1. pending(대기) => 비동기 로직 처리의 미완료 상태
+2.Fulfilled(이행) => 비동기 로직 처리가 완료된 상태로 프로미스 결과값 반환 상태
+3.Rejected(실패) => 비동기 로직 처리의 실패 또는 오류 상태
+
+new Promise();
+
+new Promise((resolve, reject) => {});
+=> 대기 상태
+
+
+// resolve()를 통해 Promise 실행
+function getData(){
+    return new Promise( (resolve, reject) => {
+      let data = 10;
+      resolve(data);
+    })
+  }
+  
+getData().then((resolvedData) => console.log(resolvedData));
+=>이행상태
+
+getdata().then((resolvedData)) => console.log((resolvedData));
+=>then()을 활용하여 결과값을 받을 수 있다.
+
+//reject를 호출해 고의적 실패로 연결
+function getData(){
+    return new Promise( (resolve, reject) => {
+      reject(new Error("This is rejected!"));
+    })
+  }
+  
+getData().catch((err) => console.log(err));
+=>실패 상태
