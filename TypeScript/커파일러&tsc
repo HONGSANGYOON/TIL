@@ -1,0 +1,47 @@
+컴파일러
+=> 타입검사를 해준다
+=> 에러메시지 해석할때 도움을 받을 수 있다.
+=> 코드변환도 해준다. 타입스크립트 -> 자바스크립트로 변환
+=> *최적화*
+
+컴파일러 한줄요약
+프로그램 언어로 작성된 소스코드를 다른 프로그램언어로 변환해주는 도구
+
+ tsc명렁어
+ tsc --init: tsconfig.json을 생상하는 명렁어
+
+ tsc index.ts: index.ts를 컴파일한다.
+
+ tsc src/*.ts: src파일 내 모든 ts파일을 컴파일한다.
+
+ tsc index.js --declaration --emitDeclarationOnly: .d.ts 파일 생성을 하는 명렁어
+=> 자바스크립트로 작성ㄷ된 모듈에 타입 선언을 제공하는데 유용하게 쓰인다.
+
+tsconfig.json 주요옵션
+=> compilerOptions - strict : true로 설정하기
+=> compilerOptions - sourceMap : 개발환경에서 true로 설정하기
+
+compilerOptions - target 옵션
+=> 어떤 JavaScript 버전으로 변환을 할 지 정하는 옵션
+
+ompilerOptions - module 옵션
+=> 모듈을 가져오고 내보내는 방식을 결정하는 옵션
+
+compilerOptions - outDir 옵션
+=> 컴파일된 JavaScript 파일이 저장될 출력 디렉터리를 지정
+
+compilerOptions - sourceMap 옵션
+=> 컴파일된 JavaScript 파일에 대한 소스 맵을 생성하는 옵션
+* 프로덕션 환경에서는 용량이나 성능상의 이유로 sourceMap을 사용하지 않는 것이 좋음.
+
+include , exclude 옵션
+tsc가 컴파일을 할 때 포함하거나 제외할 파일이나 디렉터리를 지정하는 옵션이에요!
+예시 - 'include' : ['src/**/*']
+      'exclude' : ['node_modules']
+
+.d.ts파일
+=> .d.ts 파일은 JavaScript 라이브러리도 TypeScript 코드에서 사용할 수 있게 하는 보물
+.d.ts파일은 타입스크립트 타입 정의하는 파일이다.
+타입스크립트 프로젝트에서도 자바스크립트 라이브러리를 한 줄도 수정하지 않고 그래도 쓸 수 있다.
+*호완성이 좋다는 뜻*
+

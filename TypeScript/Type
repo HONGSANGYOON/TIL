@@ -1,0 +1,60 @@
+Type
+
+1.boolean(true or false) 
+=> 3가지 이상의 상태를 표현하고 싶은 경우 → enum이나 string을 사용해야한다.
+
+2.number(숫자)
+=> 정수는 short, int, long
+=> 실수는 float, double
+
+3. string(텍스트)
+
+4. 배열([])
+
+5. 튜플: 서로 다른 타입의 원소를 순서에 맞게 가질 수 있는 특수한 형태의 배열입니다.
+예시
+=> const person: [string, number, boolean] = ['Spartan', 25, false];
+const person2: [string, number, boolean] = [25, 'Spartan', false]; // 오류!
+* 정의된 데이터 타입의 개수와 순서에 맞추어 저장을 하는 것이 필수
+
+6. enum(열거형 데이터 타입)
+enum 안에 있는 각 요소는 값이 설정되어 있지 않으면 기본적으로 숫자 0으로 시작
+enum 안에 있는 요소에는 number 혹은 string타입의 값만을 할당가능
+예시
+=> enum UserRole {
+  ADMIN = "ADMIN",
+  EDITOR = "EDITOR",
+  USER = "USER",
+}
+
+enum UserLevel {
+  NOT_OPERATOR, // 0
+  OPERATOR // 1
+}
+
+
+readonly: - *객체의 속성*을 불변으로 만드는데 사용하는 키워드
+* 클래스의 속성이나 인터페이스의 속성을 변경할 수 없게 만들 수 있다.
+
+any(모든 타입을 다 쓸 수 있다)
+=> 가급적 사용하지 말것
+
+unknown(모든 타입을 다 쓸 수 있다.)
+=> any보다 안정적이다, 할당될 타입을 지정해준다.
+
+union(여러타입 중 하나를 가질 수 있는 변수를 선언할 때 사용)
+ㅣ 연산자를 사용하여 여러타입을 결합하여 표현한다.
+예시
+=> type StringOrNumber = string | number; // 원한다면 | boolean 이런식으로 타입 추가가 가능해요!
+
+function processValue(value: StringOrNumber) {
+  if (typeof value === 'string') {
+    // value는 여기서 string 타입으로 간주됩니다.
+    console.log('String value:', value);
+  } else if (typeof value === 'number') {
+    // value는 여기서 number 타입으로 간주되구요!
+    console.log('Number value:', value);
+  }
+}
+
+ 
