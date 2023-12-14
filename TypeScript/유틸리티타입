@@ -1,0 +1,37 @@
+유틸리티 타입
+
+partial<변수명>
+=> 변수명에 대한 모든 속성을 선택적으로 만든다.
+=> 일부 속성만 사용해도 괜찮다.
+
+예시
+
+interface Person {
+  name: string;
+  age: number;
+}
+
+const updatePerson = (person: Person, fields: Partial<Person>): Person => {
+  return { ...person, ...fields };
+};
+
+const person: Person = { name: "Spartan", age: 30 };
+const changedPerson = updatePerson(person, { age: 31 });
+
+
+Required<변수명>
+=> 변수명의 모든 속성을 필수적으로 만든다, 즉 변수명의 모든 속성을 다 제공하는 객체를 생성해야한다.
+
+
+Readonly<변수명>
+=> 변수명의 모든 속성을 읽기전용으로 만든다.
+=> 불변객체고 바뀌기에 모든것을 바꿀 수 없다.(불변이 중요)
+
+Pick<변수명1,변수명1의 일부 속성>
+=> 변수명1의 일부속성으로 선택된 속성들만 선택하여 새로운 타입을 만든다
+
+Omit<변수명1,변수명1의 일부 속성>
+=> pick과 반대로 선택한 속성만 제외한 새로운 타입을 만든다.
+
+
+
