@@ -1,0 +1,18 @@
+git stash (현재 수정사항이 다 stash 상태로 저장됨  -u 붙이면 untracked file (추가된파일) 까지 저장됨)
+git stash pop  아까 넣은것 하나만 꺼내기
+git stash apply 0  번호로 꺼내기 (번호 확인 git stash list)
+git switch dev // dev로 이동
+git pull //dev를 땡겨옴
+git switch feature/MapSearch // 내 브랜치로 이동
+git rebase dev  // 최신 데브로 리베이스 (베이스를 다시잡겠다)
+git status
+// 충돌 수정중
+// 수정 완료
+git add .
+git commit -m "fix: 패키지 충돌문제 해결"
+git push //밑에 명령어 보기 위함
+git push --set-upstream origin feature/MapSearch  // 원격에 올림, --set-upstream 
+git switch dev  // dev로
+git pull
+git branch -D feature/MapSearch // 기존꺼 지우고
+git switch -c feature/MapSearch  // 새로 생성 
