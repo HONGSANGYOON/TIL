@@ -57,4 +57,53 @@ function processValue(value: StringOrNumber) {
   }
 }
 
+
+
+
+*속성명 뒤에 ?가 붙으면 선택적속성이다*
+=>4주차강의자료 참고
+
+
+
+*중요*
+
+interface와 type의 차이
+=> interface는 객체에 자주 사용된다, type은 정적타입,튜플(배열로 이루어진 타입), 유니언타입 에 사용된다.
+=> interface는 extends를 사용해서 확장가능, type은 &을 사용해서 확장가능
+
+interface 예시
+
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface Student extends Person { // 확장(상속)
+  school: string;
+}
+
+const jieun: Student = {
+  name: 'jieun',
+  age: 27,
+  school: 'HY'
+}
  
+Type예시
+
+type Person = {
+  name: string,
+  age: number
+}
+
+type Student = Person & { // 확장(상속)
+  school: string
+}
+
+const jieun: Student = {
+  name: 'jieun',
+  age: 27,
+  school: 'HY'
+}
+
+=> interface는 변수명이 같으면 자동으로 확장된다.
+=> Type은 변수명을 바꾸고 기본변수명 & {확장할타입}으로 화장해줘야한다.
