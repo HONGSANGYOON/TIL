@@ -1,0 +1,44 @@
+next.js
+
+리액트 프레임 워크
+
+yarn create react-next-app
+
+*넥스트는 결국 리액트다
+
+App Router, Page Router
+
+page Router : 가장 대중적으로 쓰이고 있다.
+
+App Router : 앞으로 중요해질테니 잘 배워두자(아직은 불안정)
+
+pre-rendering이란? client에 HTML이 이미 로드가 된 이후가 아닌, 이전에 JS를 이용해 HTML을 만드는것을 뜻한다.
+
+언제 HTML을 만드냐에 따라서 SSR, SSG로 나뉜다.
+
+Build할때 렌더링이되면? SSG
+runtime에서 렌더링이되면? SSR
+
+next의 기능
+
+- 개발모드, 운영모드가 따로 있다.
+yarn dev: 개발모드
+yarn start : 운영모드
+
+pages 폴더안에 작업하기
+- 폴더명,파일명으로 URL이 자동적용(라우터 안써된다)
+
+- 동적으로 URL이 바뀌어야한다면?
+[파일명]으로 파일명을 만들어주고 => 다이내믹 라우터
+import useRouter후, 
+const router = useRouter()
+
+{router.query.postID}로 넣어준다.
+
+링크는
+<Link href= ''>
+
+Router.push로 링크를 대신할수 있지만 UI에서의 부분을 커스텀해줘야한다.
+
+데이터 fetching
+
