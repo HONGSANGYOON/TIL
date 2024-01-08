@@ -1,0 +1,40 @@
+= 프로젝트 관련 내용 =
+- 각각 기능 구현 착수 및 기본 베이스 세팅
+
+= 오늘 있었던 문제점 =
+
+- 카테고리 안에 하위 카테고리가 있는데 카테고리를 클릭시 하위 카테고리가 UI에 나오게된다,
+  근데 한가지 카테고리를 클릭하여 하위 카테고리가 나오게 되면 다른 상위 카테고리의 버튼들이
+  밑으로 내려가지지 않아 UI가 엉키는 문제가 있었다.
+
+
+= 해결방법 = 
+
+ const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+return (
+    <>
+      {/* 최상단 버튼 카테고리 */}
+      <SCategoryContainer>
+        {categories.map(category => (
+          <div key={category}>
+            <SItemButton onClick={() => onClickCategory(category)} active={category === selectedCategory}>
+              {category}
+            </SItemButton>
+            {category === selectedCategory &&
+              items[selectedCategory].map(item => <SItemButton key={item}>{item}</SItemButton>)}
+          </div>
+        ))}
+      </SCategoryContainer>
+    </>
+  );
+
+  내가 작성한 코드 중 일부이다. 24,25번째줄을 봐야한다. 
+     {category === selectedCategory  =>  'A'
+     &&
+    items[selectedCategory].map(item => <SItemButton key={item}>{item}</SItemButton>)} => 'B'라고 보면
+
+A와 B가 일치하면 B가 구현되는 조건부 렌더링 로직이다.
+
+사실 어떻게 하다보니 UI에서 버튼들의 위치가 엉키지 않았다.(이부분으로 인해서 오늘 좀 고통 받았다)
+어떻게 바꾸다보니 해결이 됬지만 해결한 부분을 정확히 몰라 내일 한번 물어볼 계획이다.
