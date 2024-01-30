@@ -21,7 +21,6 @@ const SImgBox = styled.div`
     margin: 0;
   }
 `;
-```
 
 이미지 관련 CSS 부분에 position: absolute를 주어서 위치를 절대값으로 잡앚주고
 제품관련 상세정보에는  position: relative를 주어서 관련 정보가 길어질 경우, 페이지 길이가 늘어나서 제품 관련 정보가 페이지 안에 들어오도록 했다.
