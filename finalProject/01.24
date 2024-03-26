@@ -1,0 +1,41 @@
+문제점 : 파이어베이스에서 데이터를 갖고 오는건 가능하지만 수정하고 추가하는 부분에 에러가 생겼다.
+
+ //게시글 데이터베이스에 추가기능
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const q = query(collection(db, 'reviews'), where('email', '==', data.userEmail));
+      const querySnapshot = await getDocs(q);
+      const reviewsData: User[] = [];
+      querySnapshot.forEach(doc => {
+        reviewsData.push(doc.data() as User);
+      });
+      setReviews(reviewsData);
+    };
+
+    fetchReviews();
+  }, [data]);
+
+   //게시글 데이터베이스에 수정기능
+      const q = query(collection(db, 'reviews'), where('email', '==', data.userEmail));
+      const querySnapshot = await getDocs(q);
+      const reviewsData: User[] = [];
+      querySnapshot.forEach(doc => {
+        reviewsData.push(doc.data() as User);
+      });
+      setReviews(reviewsData);
+      setIndex('');
+    } catch (error) {
+      console.error('게시글 작성 중 오류 발생:', error);
+    }
+  };
+
+  해결방법 :   const q = query(collection(db, 'reviews'), where('email', '==', data.userEmail));
+             => db 뒤에 어떤 컬렉션을 갖고올건지(전에 했던 데이터불러오기와 같다)
+             where('email', '==', data.userEmail)) 
+             => where을 써서 if문처럼 조건을 걸어주면 조건에 맞을때만 데이터를 갖고오게 할 수 있다.
+             reviewsData.push(doc.data() as User);});
+            => push를 사용해서 올릴 수 있다, addDoc,setDoc 이런 명령어도 사용할 줄 알아야한다!!(아직은 미숙함)
+
+
+
+어제와 같이 오늘도 백엔드의 데이터를 관리하는 부분에서 많은 어려움을 겪었다. 좀더 능숙하게 하기 위해선 해보는것만이 답이다!!

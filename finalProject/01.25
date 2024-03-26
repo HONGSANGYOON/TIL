@@ -1,0 +1,16 @@
+문제점: 두가지 게시판을 각각 클릭할때마다 UI에 클릭한 게시판만 나오게 해야했다.
+      => if문을 써서 true, false로 하려 했지만 tab이란 코드를 사용한다해서 직접 사용해봤다.
+
+
+      //리뷰 & QnA tab기능
+  const [tab, setTab] = useState<string | null>(null);
+
+  const swithTab = (tab: string | null) => {
+    setTab(tab);
+  };
+
+ => true false 대신 null을 사용해서 tab기능을 완성했다. 2가지 게시판만 있는경우엔 boolean을 사용해도 되지만 3가지 이상의 게시판이 될 경우엔 boolean타입으론 한계가 있기 때문에
+    null을 사용했다. 
+
+
+저 2줄을 쓰는데만 30분 이상이 소요됬다....앞으로 갈길이 멀다....

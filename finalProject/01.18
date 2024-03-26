@@ -1,0 +1,20 @@
+문제점: 
+  // DogsFood 컬렉션 데이터 가져오기
+          const dogsFoodCollection = collection(db, 'DogsFood');
+          const dogsFoodQuery = query(dogsFoodCollection);
+          const dogsFoodSnapshot = await getDocs(dogsFoodQuery);
+          const dogsFoodData: Item[] = dogsFoodSnapshot.docs.map(doc => ({
+            id: doc.data().id,
+            가격: doc.data().가격,
+            상품명: doc.data().상품명,
+            이미지: doc.data().이미지,
+          }));
+=> 데이터베이스에서 데이터를 가져오는 로직이다. 컬렉션이 여러개라 여러 컬렉션을 한번에 갖고와야하는데 이런 경우에 collection(db, '컬렉션명')이기에 뒤에 여러 컬렉션 이름을 넣었더니 에러가 떴다
+   해결방법: collection(db, '컬렉션명')은 한번에 하나의 컬렉션만 갖고 올수 있기에 여러 컬렉션을 갖고오려면 위에 같은 로직을 반복적으로 사용해줘야한다.
+           (반복적으로 사용해야하는 로직을 짧게 만드는법은 아직 해결하지 못했다)
+           *중요한점* 파이어베이스관련 import를 할땐 'firebase/firestore'로 갖고오기 뒤에 lite가 붙어서 올 경우가 있는데 그럴 경우 에러가 뜬다!
+
+
+
+문제점:  id: doc.data().id의 부분이 처음엔 id: doc.id로 되어있어서 에러가 떴다.
+=> 컬렉션 안에 id를 넣어놨기 때문에  id: doc.data().id로 코드를 짜야 안에있는 id를 인식해서 갖고온다!!
