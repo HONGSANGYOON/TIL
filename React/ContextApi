@@ -1,0 +1,52 @@
+Context Api란?
+Context는 리액트 컴포넌트간에 어떠한 값을 공유할수 있게 해주는 기능입니다.
+주로 Context는 전역적(global)으로 필요한 값을 다룰 때 사용하는데요, 꼭 전역적일 필요는 없습니다.
+Context를 단순히 "리액트 컴포넌트에서 Props가 아닌 또 다른 방식으로 컴포넌트간에 값을 전달하는 방법이다" 라고 접근을 하시는 것이 좋습니다.
+
+= 사용법 =
+
+import { createContext } from "react";
+
+const LogContext = createContext('Hello');
+
+export default LogContext;
+
+이럼 context에 관한 컴포넌트 와
+
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import RootStack from './screens/RootStack';
+import LogContext from './contexts/LogContext';
+
+
+function App() {
+  return (
+    <NavigationContainer>
+      <LogContext.Provider value="Hello World">
+        <FeedsStack />
+      </LogContext.Provider>
+    </NavigationContainer>
+  );
+}
+
+export default App;
+
+context에 관한 provider 컴포넌트 하나 총 2개의 컴포넌트가 필요하다.
+Provider는 Context 안에 있는 값을 사용할 컴포넌트들을 감싸주는 용도로 사용한다.
+
+useContext Hook 함수
+리액트에 useContext라는 Hook을 사용하면 Context의 값을 훨씬 간결하게 사용할 수 있기 때문에 
+Context의 Consumer라는 것도 꼭 사용할 필요가 없다. 
+
+요점정리
+createContext() 함수를 호출하여 Context 객체를 생성합니다. 
+이 Context 객체는 Provider와 Consumer로 구성됩니다.
+
+Provider는 Context로 전달할 값을 설정하는 컴포넌트입니다. 
+이 값은 Provider 컴포넌트의 props로 전달됩니다. 이렇게 설정된 값을 Consumer에서 사용할 수 있습니다.
+
+Consumer는 Context 값을 사용하는 컴포넌트입니다.
+이 컴포넌트에서는 Context 객체를 가져와서 값을 사용합니다.
+
+useContext는 React 16.8 이상 버전에서 Context 값을 사용하는 훅입니다. 
+Consumer과 동일하게, 해당 훅을 사용해 Context 객체를 가져와서 값을 사용합니다.
